@@ -1,69 +1,65 @@
-# Maching-Learning
-This repository contains a collection of Maching Learning projects. It includes exploratory analyses, predictive modeling, dimensionality reduction and model evaluation using real-world datasets.
+# Machine-Learning Projects
+
+This repository contains a collection of Machine Learning projects developed as part of an advanced analytics curriculum. The projects demonstrate a progression in complexity, covering exploratory analysis, predictive modeling, dimensionality reduction, and model evaluation using real-world datasets.
 
 Currently included projects:
 
-- **BarcelonaMotorIBEX** – Predictive modeling of NO₂ pollution levels in Barcelona.
-- **Vacaciones** – Classification of user ratings using linear and Bayesian models.
+- **BarcelonaMotorIBEX** – Predictive modeling of NO₂ pollution levels using regularized regression.
+- **Vacaciones** – Classification of user travel preferences using linear and Bayesian models.
+- **NASDAQ** – Financial forecasting using Neural Networks (MLP) and hyperparameter tuning.
 
 ---
 
 ## 📂 Repository Structure
 
-
-Each folder includes the main notebook, generated figures, and supporting resources required to reproduce the analysis.
+Each folder includes the main notebook (or Python script), generated figures, and supporting resources required to reproduce the analysis.
 
 ---
 
 ## 🔷 Projects Overview
 
-### **BarcelonaMotorIBEX**
-A predictive study analyzing daily **NO₂ levels in l’Eixample (Barcelona)** using open data from the city (2022–2024). The dataset includes:
+### **1. BarcelonaMotorIBEX** (Regression & Feature Engineering)
+A predictive study analyzing daily **NO₂ levels in l’Eixample (Barcelona)** using open data from the city (2022–2024). The dataset includes vehicle registrations, mobility counts, electricity prices, traffic volume, and meteorological variables.
 
-- Vehicle registrations  
-- Inter-city mobility counts  
-- Electricity prices  
-- Traffic volume  
-- Meteorological variables (temperature, wind, precipitation) from multiple observatories  
+**Key Techniques:**
+- Train/Test split (60/40) and detailed EDA.
+- Data transformation and feature preprocessing.
+- Dimensionality reduction (PCA) visualization.
+- Models: **Linear Regression, Ridge Regression, LASSO**.
+- **Statistical Significance:** Analysis using OLS (statsmodels) to identify redundant variables.
+- **Feature Engineering:** Expansion with `PolynomialFeatures` (interaction terms) to capture non-linear relationships.
+- Residual analysis and comparison of improved models.
 
-The project includes:
+### **2. Vacaciones** (Classification & Imbalance Handling)
+A classification project involving user ratings for travel categories (parks, theaters, beaches, etc.) to predict user profiles.
 
-- Train/Test split (60/40) and exploratory data analysis  
-- Data transformation and feature preprocessing  
-- Dimensionality reduction (PCA or similar)  
-- Models: **Linear Regression, Ridge Regression, LASSO**  
-- Prediction vs. ground truth visualizations + residual analysis  
-- Identification of redundant meteorological stations  
-- Statistical significance analysis using **OLS (statsmodels)**  
-- Feature selection based on significance  
-- Expansion with **PolynomialFeatures (degree 2, interaction_only=True)**  
-- Comparison of improved models (Linear + LASSO)
+**Key Techniques:**
+- Exploratory analysis and correlation study.
+- Handling slight class imbalance using `class_weight='balanced'`.
+- Models:
+  - **Gaussian Naive Bayes** (with Gaussianization of features).
+  - **Linear Discriminant Analysis (LDA)**.
+  - **Logistic Regression** with extensive hyperparameter tuning.
+- **Evaluation:** Cross-validation, Accuracy, F1-score, and ROC–AUC curves.
+- Interpretation of model coefficients to understand feature importance per class.
 
----
+### **3. NASDAQ** (Neural Networks for Regression)
+An advanced project focused on predicting stock market indices using **Multi-Layer Perceptrons (MLP)**. This project shifts focus from linear models to non-linear deep learning architectures.
 
-### **Vacaciones**
-A classification project involving user ratings from 0 to 4. Key components:
-
-- Exploratory analysis + correlation study  
-- Identification of slight class imbalance  
-- Applied models:  
-  - **Gaussian Naive Bayes** (with and without Gaussianization)  
-  - **Linear Discriminant Analysis (LDA)**  
-  - **Logistic Regression** with hyperparameter tuning  
-- Cross-validation + metrics: Accuracy, F1-score, ROC–AUC  
-- Confusion matrices and ROC curves  
-- Use of `class_weight='balanced'` to improve recall for the minority class  
-- Interpretation of coefficients from the best model  
+**Key Techniques:**
+- **Data Scaling:** Implementation of `MinMaxScaler`/`StandardScaler` (critical for Neural Network convergence).
+- **Model:** **MLPRegressor** (Scikit-Learn).
+- **Architecture Search:** Exploration of different hidden layer configurations (depth vs. width).
+- **Hyperparameter Tuning:** Grid search for activation functions (`relu`, `tanh`), solvers (`adam`, `sgd`), and regularization (`alpha`).
+- **Diagnostics:** Analysis of **Loss Curves** (Training vs. Validation loss) to detect overfitting or underfitting.
+- Comparison of the Neural Network performance against linear baselines.
 
 ---
 
 ## 🛠️ Technologies Used
 
-- Python 3  
-- NumPy, Pandas  
-- Matplotlib, Seaborn  
-- Scikit-Learn  
-- Statsmodels  
-- apafib (Barcelona open data loader)
-
----
+- **Core:** Python 3, NumPy, Pandas
+- **Visualization:** Matplotlib, Seaborn
+- **Machine Learning:** Scikit-Learn (SVM, MLP, Trees, Linear Models)
+- **Statistics:** Statsmodels
+- **Data Loading:** apafib (Custom library for datasets)
